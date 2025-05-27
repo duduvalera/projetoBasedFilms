@@ -1,0 +1,24 @@
+.filmes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+}
+
+.filme {
+  display: grid;
+}
+
+.filme .titulo h3 {
+  margin-top: 15px;
+  justify-self: center;
+  text-transform: uppercase;
+  word-break: break-all;
+}
+
+.filme .descricao {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
