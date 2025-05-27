@@ -2,7 +2,6 @@ header .titulo-principal {
   font-size: 6rem;
   text-align: center;
   text-transform: uppercase;
-  color: #fff;
   padding: 85px 0 45px 0;
 }
 
@@ -18,8 +17,4 @@ header .menu-principal .item {
   font-size: 2.25rem;
   text-transform: uppercase;
   font-weight: bolder;
-}
-
-header .menu-principal .item a {
-  color: #fff;
 }
