@@ -14,9 +14,6 @@
   justify-self: center;
   text-transform: uppercase;
   word-break: break-all;
-  font-family: "Quantico", sans-serif;
-  font-weight: 700;
-  font-style: normal;
 }
 
 .filme .descricao {
@@ -25,4 +22,11 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.filme .nota {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
 }
