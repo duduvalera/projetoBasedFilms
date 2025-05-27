@@ -5,4 +5,5 @@
 @import "./utils/components.css";
 
 /* Main */
+@import "./global/header.css";
 @import "./main/main.css";
