@@ -18,3 +18,7 @@ header .menu-principal .item {
   text-transform: uppercase;
   font-weight: bolder;
 }
+
+header .menu-principal .item a {
+  color: #fff;
+}
