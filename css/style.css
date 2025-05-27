@@ -1,0 +1,7 @@
+/* Global */
+@import "./global/global.css";
+
+/* Utils */
+@import "./utils/components.css";
+
+/* Main */
