@@ -9,8 +9,15 @@
   display: grid;
   transition: transform 0.3s ease, opacity 0.3s ease;
   position: relative;
-
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
   z-index: 2;
+}
+
+.filme.ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .filme.hide {

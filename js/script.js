@@ -51,3 +51,27 @@ function initAccordion() {
 }
 
 initAccordion();
+
+function initSoftScroll() {
+  const movieItens = document.querySelectorAll(".filmes .filme");
+  const windowHeight = window.innerHeight * 0.6;
+
+  function scrollItens() {
+    movieItens.forEach((movieItem) => {
+      const movieTop = movieItem.getBoundingClientRect().top;
+
+      const isSectionVisible = movieTop - windowHeight < 0;
+      if (isSectionVisible) {
+        movieItem.classList.add("ativo");
+      } else {
+        movieItem.classList.remove("ativo");
+      }
+    });
+  }
+
+  scrollItens();
+
+  window.addEventListener("scroll", scrollItens);
+}
+
+initSoftScroll();
