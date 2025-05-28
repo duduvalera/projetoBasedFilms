@@ -31,3 +31,23 @@ function initMovieFilter() {
 }
 
 initMovieFilter();
+
+function initAccordion() {
+  const titulosFilme = document.querySelectorAll(".titulo h3");
+
+  if (titulosFilme.length) {
+    titulosFilme[0].classList.add("ativo");
+    titulosFilme[0].parentElement.nextElementSibling.classList.add("ativo");
+
+    function mostrarDescricao(tituloFilme) {
+      this.classList.toggle("ativo");
+      this.parentElement.nextElementSibling.classList.toggle("ativo");
+    }
+
+    titulosFilme.forEach((tituloFilme) => {
+      tituloFilme.addEventListener("click", mostrarDescricao);
+    });
+  }
+}
+
+initAccordion();

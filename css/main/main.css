@@ -8,6 +8,9 @@
 .filme {
   display: grid;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+
+  z-index: 2;
 }
 
 .filme.hide {
@@ -30,19 +33,29 @@
 
 .filme .titulo {
   position: relative;
+  background-color: #0d1017;
+  z-index: 2;
 }
 
 .filme .descricao {
-  margin-top: 15px;
   display: flex;
+  margin-top: 15px;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  display: none;
+  bottom: 20px;
+  position: absolute;
+  z-index: 1;
+
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.8s;
 }
 
 .filme .descricao.ativo {
-  display: block;
+  position: absolute;
+
+  bottom: -30px;
 }
 
 .filme .titulo h3::after {
@@ -54,17 +67,11 @@
   background-size: contain;
   position: absolute;
   margin-left: 10px;
+  transition: 0.3s;
 }
 
-.filme .titulo.ativo h3::after {
-  content: "";
-  width: 25px;
-  height: 25px;
+.filme .titulo h3.ativo::after {
   background-image: url(../../img/plus-minus-svgrepo-com.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  margin-left: 10px;
 }
 
 .filme .nota {
@@ -72,4 +79,8 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 5px;
+}
+
+.filmes {
+  margin-bottom: 200px;
 }
