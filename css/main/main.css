@@ -7,6 +7,16 @@
 
 .filme {
   display: grid;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.filme.hide {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.filme.hidden {
+  display: none;
 }
 
 .filme .titulo h3 {
