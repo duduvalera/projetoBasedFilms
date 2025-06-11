@@ -2,13 +2,14 @@ function initMovieFilter() {
   const menuItens = document.querySelectorAll(".menu-principal .item");
 
   function filterMovies(category) {
-    const arrayFilmesGenero = listaFilmes.filter((filme) => {
+    let arrayFilmesGenero = listaFilmes.filter((filme) => {
       if (category === "todos") {
         return filme;
       } else {
         return filme.genero === category;
       }
     });
+    console.log(arrayFilmesGenero);
     carregarFilmes(arrayFilmesGenero);
   }
 
@@ -72,6 +73,7 @@ function initSoftScroll() {
 
 const divFilmes = document.querySelector(".filmes");
 function carregarFilmes(listaFilmes) {
+  divFilmes.innerHTML = "";
   divFilmes.innerHTML = listaFilmes
     .map((filme) => {
       return `
@@ -96,7 +98,7 @@ function carregarFilmes(listaFilmes) {
    `;
     })
     .join("");
-  initMovieFilter();
+
   initSoftScroll();
 }
 
@@ -104,6 +106,7 @@ function verificarCarregamentodaPagina() {
   window.addEventListener("load", () => {
     console.log("Carregamento concluído");
     carregarFilmes(listaFilmes);
+    initMovieFilter();
   });
 }
 
