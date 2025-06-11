@@ -65,6 +65,12 @@ function initSoftScroll() {
         movieItem.classList.add("ativo");
       } else {
         movieItem.classList.remove("ativo");
+        movieItem.querySelector(".titulo > h3").classList.contains("ativo")
+          ? movieItem.querySelector(".titulo h3").classList.remove("ativo")
+          : "";
+        movieItem.querySelector(".descricao").classList.contains("ativo")
+          ? movieItem.querySelector(".descricao").classList.remove("ativo")
+          : "";
       }
     });
   }
@@ -75,3 +81,11 @@ function initSoftScroll() {
 }
 
 initSoftScroll();
+
+function verificarCarregamentodaPagina() {
+  window.addEventListener("load", () => {
+    console.log("Carregamento concluído");
+  });
+}
+
+verificarCarregamentodaPagina();
