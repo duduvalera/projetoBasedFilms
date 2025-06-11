@@ -2,22 +2,14 @@ function initMovieFilter() {
   const menuItens = document.querySelectorAll(".menu-principal .item");
 
   function filterMovies(category) {
-    const movieItens = document.querySelectorAll(".filme");
-    movieItens.forEach((movieItem) => {
-      if (movieItem.classList.contains(category) || category === "todos") {
-        movieItem.classList.remove("hide");
-
-        setTimeout(() => {
-          movieItem.classList.remove("hidden");
-        }, 300);
+    const arrayFilmesGenero = listaFilmes.filter((filme) => {
+      if (category === "todos") {
+        return filme;
       } else {
-        movieItem.classList.add("hide");
-
-        setTimeout(() => {
-          movieItem.classList.add("hidden");
-        }, 300);
+        return filme.genero === category;
       }
     });
+    carregarFilmes(arrayFilmesGenero);
   }
 
   menuItens.forEach((menuItem) => {
@@ -29,8 +21,6 @@ function initMovieFilter() {
     });
   });
 }
-
-initMovieFilter();
 
 function initAccordion() {
   const titulosFilme = document.querySelectorAll(".titulo h3");
@@ -80,12 +70,135 @@ function initSoftScroll() {
   window.addEventListener("scroll", scrollItens);
 }
 
-initSoftScroll();
+const divFilmes = document.querySelector(".filmes");
+function carregarFilmes(listaFilmes) {
+  divFilmes.innerHTML = listaFilmes
+    .map((filme) => {
+      return `
+   <div class="filme ${filme.genero}">
+            <div class="nota">
+              <img src="./img/IMDB_Logo_2016.svg.png" width="42" alt="">
+
+              <span>${filme.nota}</span>
+            </div>
+            <div class="imagem">
+              <img src="${filme.capa}" width="300" height="450" height="450" alt="">
+            </div>
+            <div class="titulo">
+              <h3>${filme.titulo}</h3>
+            </div>
+            <div class="descricao">
+              <img src="./img/nr16-auto.png" width="20" alt="">
+              <span>${filme.duracao}</span>
+              <span>${filme.ano}</span>
+            </div>
+          </div>
+   `;
+    })
+    .join("");
+  initMovieFilter();
+  initSoftScroll();
+}
 
 function verificarCarregamentodaPagina() {
   window.addEventListener("load", () => {
     console.log("Carregamento concluído");
+    carregarFilmes(listaFilmes);
   });
 }
 
 verificarCarregamentodaPagina();
+
+function Filmes(titulo, capa, nota, ano, duracao, classificacao, genero) {
+  this.titulo = titulo;
+  this.capa = capa;
+  this.nota = nota;
+  this.ano = ano;
+  this.duracao = duracao;
+  this.classificacao = classificacao;
+  this.genero = genero;
+}
+
+const listaFilmes = [
+  new Filmes(
+    "Rocky: Um Lutador",
+    "./img/rocky.jpg",
+    8.1,
+    1976,
+    "2h",
+    16,
+    "drama"
+  ),
+  new Filmes(
+    "Um Sonho de Liberdade",
+    "./img/umsonhodeliberdade.jpg",
+    9.4,
+    1976,
+    "2h30m",
+    14,
+    "drama"
+  ),
+  new Filmes(
+    "Interestelar",
+    "./img/interestelar.jpg",
+    8.1,
+    1976,
+    "2h",
+    16,
+    "drama"
+  ),
+  new Filmes(
+    "O Cavaleiro das trevas",
+    "./img/batmanct1.jpg",
+    9.4,
+    1976,
+    "2h30m",
+    14,
+    "suspense"
+  ),
+  new Filmes(
+    "O Senhor dos Anéis: A Sociedade do Anel",
+    "./img/rocky.jpg",
+    8.1,
+    1976,
+    "2h",
+    16,
+    "fantasia"
+  ),
+  new Filmes(
+    "O Mentiroso",
+    "./img/umsonhodeliberdade.jpg",
+    9.4,
+    1976,
+    "2h30m",
+    14,
+    "comedia"
+  ),
+  new Filmes(
+    "Interestelar",
+    "./img/interestelar.jpg",
+    8.1,
+    1976,
+    "2h",
+    16,
+    "drama"
+  ),
+  new Filmes(
+    "O Cavaleiro das trevas",
+    "./img/batmanct1.jpg",
+    9.4,
+    1976,
+    "2h30m",
+    14,
+    "suspense"
+  ),
+  new Filmes(
+    "Interestelar",
+    "./img/interestelar.jpg",
+    8.1,
+    1976,
+    "2h",
+    16,
+    "drama"
+  ),
+];
