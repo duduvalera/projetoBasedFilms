@@ -27,6 +27,52 @@
           <li class="item"><a href="#" data-category="todos">Todos</a></li>
         </ul>
       </nav>
+      <div>
+        <form action="#" method="get" id="filtros-pesquisa">
+          <div>
+            <label for="ordem-alfabetica">Ordem Alfabética:</label>
+            <select id="ordem-alfabetica" name="ordem-alfabetica">
+              <option value="asc">A-Z</option>
+              <option value="desc">Z-A</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="nota">Filtro por Nota (Mais Avaliados):</label>
+            <select id="nota" name="nota">
+              <option value="mais-avaliados">Mais Avaliados</option>
+              <option value="menos-avaliados">Menos Avaliados</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="duracao">Filtro por Duração:</label>
+            <select id="duracao" name="duracao">
+              <option value="curto">Curto</option>
+              <option value="medio">Médio</option>
+              <option value="longo">Longo</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="classificacao">Classificação Indicativa:</label>
+            <select id="classificacao" name="classificacao">
+              <option value="livre">Livre</option>
+              <option value="10">10 anos</option>
+              <option value="12">12 anos</option>
+              <option value="14">14 anos</option>
+              <option value="16">16 anos</option>
+              <option value="18">18 anos</option>
+            </select>
+          </div>
+
+          <input type="hidden" name="categoria" id="categoria" value="todos">
+
+          <div>
+            <button type="submit">Filtrar</button>
+          </div>
+        </form>
+      </div>
     </div>
   </header>
   <main>
