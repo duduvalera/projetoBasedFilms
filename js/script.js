@@ -78,6 +78,29 @@ function carregarFilmes(listaFilmes) {
   divFilmes.innerHTML = "";
   divFilmes.innerHTML = listaFilmes
     .map((filme) => {
+      let imgClassificacao;
+      switch (filme.classificacao) {
+        case 10:
+          imgClassificacao = "./img/nr10-auto.png";
+          break;
+        case 12:
+          imgClassificacao = "./img/Classind_A12.svg.png";
+          break;
+        case 14:
+          imgClassificacao = "./img/nr14-auto.png";
+          break;
+        case 16:
+          imgClassificacao = "./img/nr16-auto.png";
+          break;
+        case 18:
+          imgClassificacao = "./img/nr18-auto.png";
+          break;
+        default:
+          imgClassificacao = "./img/classificacao-livre-logo.png";
+          break;
+      }
+      console.log(imgClassificacao);
+
       return `
    <div class="filme ${filme.genero}">
             <div class="nota">
@@ -92,7 +115,7 @@ function carregarFilmes(listaFilmes) {
               <h3>${filme.titulo}</h3>
             </div>
             <div class="descricao">
-              <img src="./img/nr16-auto.png" width="20" alt="">
+              <img src="${imgClassificacao}" width="20" alt="">
               <span>${filme.duracao}</span>
               <span>${filme.ano}</span>
             </div>
