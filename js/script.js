@@ -45,8 +45,6 @@ function initAccordion() {
   }
 }
 
-initAccordion();
-
 function initSoftScroll() {
   const movieItens = document.querySelectorAll(".filmes .filme");
   const windowHeight = window.innerHeight * 0.6;
@@ -111,10 +109,27 @@ function verificarCarregamentodaPagina() {
     console.log("Carregamento concluído");
     carregarFilmes(listaFilmes);
     initMovieFilter();
+    initAccordion();
   });
 }
 
 verificarCarregamentodaPagina();
+
+const barraPesquisa = document.querySelector("#form-pesquisa");
+
+barraPesquisa.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let inputPesquisa = event.target.children.pesquisa;
+  let inputPesquisaValor = inputPesquisa.value;
+  let resultadoPesquisa = listaFilmes.filter((filme) => {
+    return filme.titulo
+      .toLowerCase()
+      .includes(inputPesquisaValor.toLowerCase());
+  });
+
+  carregarFilmes(resultadoPesquisa);
+  initAccordion();
+});
 
 const filtrosPesquisa = document.querySelector("#filtros-pesquisa");
 
@@ -180,6 +195,7 @@ filtrosPesquisa.addEventListener("submit", function (event) {
   });
   console.log(arrayFormulario);
   carregarFilmes(arrayFormulario);
+  initAccordion();
 });
 
 function Filmes(titulo, capa, nota, ano, duracao, classificacao, genero) {
@@ -194,84 +210,125 @@ function Filmes(titulo, capa, nota, ano, duracao, classificacao, genero) {
 
 const listaFilmes = [
   new Filmes(
-    "Rocky: Um Lutador",
+    "Rocky - Um Lutador",
     "./img/rocky.jpg",
     8.1,
     1976,
     "2h",
-    16,
+    12,
     "drama"
   ),
   new Filmes(
     "Um Sonho de Liberdade",
     "./img/umsonhodeliberdade.jpg",
-    9.4,
+    9.3,
     1976,
-    "2h30m",
-    14,
+    "2h22m",
+    16,
     "drama"
   ),
+
+  new Filmes(
+    "Rocky III - O desafio supremo",
+    "./img/rocky3.jpg",
+    6.9,
+    1982,
+    "1h39m",
+    12,
+    "drama"
+  ),
+
   new Filmes(
     "Interestelar",
     "./img/interestelar.jpg",
-    8.1,
-    1976,
-    "2h40m",
-    0,
+    8.7,
+    2014,
+    "2h49m",
+    10,
     "drama"
   ),
   new Filmes(
-    "O Cavaleiro das trevas",
+    "Rocky Balboa",
+    "./img/rockybalboa.jpg",
+    7.1,
+    2006,
+    "1h42m",
+    12,
+    "drama"
+  ),
+
+  new Filmes(
+    "Batman: O Cavaleiro das trevas",
     "./img/batmanct1.jpg",
-    8.8,
-    1976,
-    "2h30m",
-    14,
+    9.0,
+    2008,
+    "2h32m",
+    12,
     "suspense"
   ),
   new Filmes(
+    "Rocky II - A revanche",
+    "./img/rocky2.jpg",
+    7.3,
+    1979,
+    "1h59m",
+    12,
+    "drama"
+  ),
+  new Filmes(
     "O Senhor dos Anéis: A Sociedade do Anel",
-    "./img/rocky.jpg",
-    8.1,
-    1976,
-    "3h",
-    16,
+    "./img/senhordosaneis.jpg",
+    8.9,
+    2001,
+    "2h58m",
+    12,
     "fantasia"
   ),
   new Filmes(
     "O Mentiroso",
-    "./img/umsonhodeliberdade.jpg",
-    9.4,
-    1976,
-    "1h40m",
-    14,
+    "./img/mentiroso.jpg",
+    6.9,
+    1997,
+    "1h27m",
+    0,
     "comedia"
   ),
   new Filmes(
-    "Interestelar",
-    "./img/interestelar.jpg",
-    8.1,
-    1976,
-    "1h20m",
-    16,
+    "Gata em Teto de Zinco Quente",
+    "./img/gata.jpg",
+    7.9,
+    1958,
+    "1h48m",
+    14,
     "drama"
   ),
+  new Filmes("Rocky IV", "./img/rocky4.jpg", 6.9, 1985, "1h31m", 14, "drama"),
+  new Filmes("Rocky V", "./img/rocky5.jpg", 5.4, 1990, "1h51m", 14, "drama"),
   new Filmes(
-    "Seven",
-    "./img/batmanct1.jpg",
-    7.7,
-    1976,
-    "2h30m",
+    "Seven - Os Sete Crimes Capitais",
+    "./img/seven.jpg",
+    8.6,
+    1995,
+    "2h07m",
     14,
     "suspense"
   ),
   new Filmes(
-    "Interestelar",
-    "./img/interestelar.jpg",
-    8.1,
-    1976,
-    "2h",
-    16,
-    "drama"
+    "O Pentelho",
+    "./img/pentelho.jpg",
+    6.1,
+    1996,
+    "1h36m",
+    0,
+    "comedia"
+  ),
+  new Filmes(
+    "Ace Ventura - Um Detetive Diferente",
+    "./img/aceventura.jpg",
+    6.9,
+    1994,
+    "1h26m",
+    14,
+    "comedia"
   ),
 ];
