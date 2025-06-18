@@ -1,3 +1,5 @@
+const inputHiddenPesquisa = document.querySelector("#categoria");
+
 function filterMovies(category) {
   let arrayFilmesGenero = listaFilmes.filter((filme) => {
     if (category === "todos") {
@@ -18,8 +20,7 @@ function initMovieFilter() {
       event.preventDefault();
 
       const movieCategory = event.target.dataset.category;
-      const inputHiddenPesquisa = (document.querySelector("#categoria").value =
-        movieCategory);
+      inputHiddenPesquisa.value = movieCategory;
 
       let arrayFiltrado = filterMovies(movieCategory);
       carregarFilmes(arrayFiltrado);
@@ -99,7 +100,6 @@ function carregarFilmes(listaFilmes) {
           imgClassificacao = "./img/classificacao-livre-logo.png";
           break;
       }
-      console.log(imgClassificacao);
 
       return `
    <div class="filme ${filme.genero}">
@@ -138,10 +138,25 @@ function verificarCarregamentodaPagina() {
 
 verificarCarregamentodaPagina();
 
+const inputPesquisa = document.querySelector("#pesquisa");
+
+inputPesquisa.addEventListener("keyup", function (event) {
+  let inputPesquisaValor = event.target.value;
+  let resultadoPesquisa = listaFilmes.filter((filme) => {
+    return filme.titulo
+      .toLowerCase()
+      .includes(inputPesquisaValor.toLowerCase());
+  });
+
+  carregarFilmes(resultadoPesquisa);
+  initAccordion();
+});
+
 const barraPesquisa = document.querySelector("#form-pesquisa");
 
 barraPesquisa.addEventListener("submit", function (event) {
   event.preventDefault();
+  inputHiddenPesquisa.value = "todos";
   let inputPesquisa = event.target.children.pesquisa;
   let inputPesquisaValor = inputPesquisa.value;
   let resultadoPesquisa = listaFilmes.filter((filme) => {
